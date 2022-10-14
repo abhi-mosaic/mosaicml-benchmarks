@@ -4,6 +4,7 @@
 import os
 import sys
 
+import wandb
 from composer import Trainer
 from composer.callbacks import LRMonitor, MemoryMonitor, SpeedMonitor
 from composer.loggers import ObjectStoreLogger, ProgressBarLogger, WandBLogger
@@ -11,11 +12,9 @@ from composer.optim import DecoupledAdamW
 from composer.optim.scheduler import (ConstantWithWarmupScheduler,
                                       CosineAnnealingWithWarmupScheduler)
 from composer.utils import S3ObjectStore, dist, reproducibility
-from omegaconf import OmegaConf as om
-
-import wandb
 from llm.data_pubmed import build_dataloader
 from llm.gpt import ComposerGPT
+from omegaconf import OmegaConf as om
 
 
 def build_logger(name, kwargs):

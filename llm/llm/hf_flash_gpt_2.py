@@ -130,11 +130,6 @@ class GPT2FlashLMHeadModel(GPT2LMHeadModel):
         self.transformer.wte._fsdp_wrap = False
         self.lm_head._fsdp_wrap = False
 
-    # Meta tensor param init fn
-    def param_init_fn(self, module):
-        if isinstance(module, GPT2LMHeadModel):
-            module.post_init()
-
     # FSDP Wrap function
     def fsdp_wrap_fn(self, module):
         return isinstance(module, GPT2Block)
