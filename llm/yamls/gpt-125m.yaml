@@ -72,7 +72,7 @@ optimizer:
   weight_decay: 0.0
 
 max_duration: 5000ba
-eval_interval: 500ba
+eval_interval: 5000ba
 global_train_batch_size: 256
 grad_clip_norm: 1.0
 
@@ -106,7 +106,7 @@ loggers:
 
 # # Checkpointing
 # checkpoint_save_path: './{run_name}/checkpoints'
-# checkpoint_save_interval: 500ba
+# checkpoint_save_interval: 5000ba
 # num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
 
 # # Load from local filesystem
