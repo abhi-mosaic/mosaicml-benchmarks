@@ -3,9 +3,6 @@ data_local: &data_local /tmp/allenai-c4
 max_seq_len: &max_seq_len 2048
 tokenizer_name: &tokenizer_name gpt2
 
-# Run Name
-run_name: gpt-125m
-
 # Model
 model:
   tokenizer_name: *tokenizer_name
