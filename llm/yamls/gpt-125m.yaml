@@ -1,5 +1,5 @@
-data_remote: &data_remote ./my-copy-c4
-data_local: &data_local ./my-copy-c4
+data_remote: &data_remote s3://allenai-c4/mds/1-gz/
+data_local: &data_local /tmp/allenai-c4
 max_seq_len: &max_seq_len 2048
 tokenizer_name: &tokenizer_name gpt2
 
@@ -27,11 +27,11 @@ train_loader:
     name: streaming_c4
     remote: *data_remote
     local: *data_local
-    split: train
+    split: val
     tokenizer_name: *tokenizer_name
     max_seq_len: *max_seq_len
     group_method: concat
-    shuffle: true
+    shuffle: false
   drop_last: true
   num_workers: 8
   pin_memory: true
@@ -98,8 +98,8 @@ callbacks:
   # memory_monitor: {}
 
 loggers:
-  progress_bar: {}
-  # wandb: {}
+  # progress_bar: {}
+  wandb: {}
   # s3:
   #   bucket: my-bucket
   #   prefix: my-folder
