@@ -15,6 +15,7 @@ from composer.utils import dist, reproducibility
 from omegaconf import OmegaConf as om
 
 from src.data_c4 import build_c4_dataloader
+from src.mosaic_bert import ComposerMosaicBert
 from src.mosaic_gpt import ComposerMosaicGPT
 
 
@@ -101,6 +102,8 @@ def build_composer_model(cfg):
 
     if cfg.name == 'mosaic_gpt':
         return ComposerMosaicGPT(cfg)
+    elif cfg.name == 'mosaic_bert':
+        return ComposerMosaicBert(cfg)
     else:
         raise ValueError(f'Not sure how to build model with name={cfg.name}')
 

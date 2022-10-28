@@ -148,8 +148,9 @@ def build_c4_dataloader(cfg: Mapping[str, Any], device_batch_size: int):
                             group_method=cfg.dataset.group_method,
                             batch_size=device_batch_size)
 
+    mlm = cfg.get('mlm_probability', 0) > 0
     collate_fn = transformers.DataCollatorForLanguageModeling(
-        tokenizer=dataset.tokenizer, mlm=False)
+            tokenizer=dataset.tokenizer, mlm=mlm, mlm_probability=cfg.mlm_probability)
 
     return DataLoader(
         dataset,
